@@ -4,12 +4,13 @@ import (
     "fmt"
     "os/exec"
     "time"
+		"os"
 )
 
 func run(cmd string, args ...string) error {
     c := exec.Command(cmd, args...)
-    c.Stdout = nil
-    c.Stderr = nil
+    c.Stdout = os.Stdout
+    c.Stderr = os.Stderr
     return c.Run()
 }
 
